@@ -4,5 +4,5 @@ create server ,
 shutdown server, 
 restart server,
 delete server ,
-get all servers ,
+get all servers 
 
