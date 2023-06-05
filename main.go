@@ -4,9 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/hetznercloud/hcloud-go/hcloud"
-	"io/ioutil"
 	"log"
-	"net/http"
 )
 
 const apiToken = ""
@@ -178,30 +176,5 @@ func GetLocationOfServers(ctx context.Context, client *hcloud.Client) {
 		fmt.Println(result[i].Name)
 		// use dot notation
 	}
-
-}
-
-func checkTokenWorks() {
-
-	client := &http.Client{}
-	req, err := http.NewRequest("GET", "https://api.hetzner.cloud/v1/servers", nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	req.Header.Set("Authorization", "Bearer "+apiToken)
-	resp, err := client.Do(req)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer resp.Body.Close()
-	bodyText, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", bodyText)
-
-}
-
-func getMetricsFromServer() {
 
 }
